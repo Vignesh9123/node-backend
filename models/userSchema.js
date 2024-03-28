@@ -17,6 +17,6 @@ const userSchema = new mongoose.Schema({
 },{timestamps:true});
 
 // Create Comment model
-export default mongoose.models.User || mongoose.model('User', userSchema);
+module.exports = mongoose.models.User || mongoose.model('User', userSchema);
 
 
