@@ -3,7 +3,6 @@ const app = require("express").Router()
 
 app.post("/signup",async(req,res)=>{
     let body = await req.body
-    res.send("Hello")
     const {email,username,password} = body
     let userExists = await Users.findOne({email})
     if(userExists){
