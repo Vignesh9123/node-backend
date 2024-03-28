@@ -2,7 +2,7 @@ const Users = require("../models/userSchema")
 const app = require("express").Router()
 
 app.post("/signup",async(req,res)=>{
-    let body = await req.body
+    let body = req.body
     const {email,username,password} = body
     let userExists = await Users.findOne({email})
     if(userExists){
