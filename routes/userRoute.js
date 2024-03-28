@@ -6,12 +6,14 @@ const bcrypt = require("bcrypt")
 app.use(bodyparser.json())
 app.post("/signup",async(req,res)=>{
     let body = req.body
+
     const {email,username,password} = body
-    let userExists = await Users.findOne({$or: [{ email}, { username}]})
-    if(userExists.email == email){
+    let userExists = await Users.findOne({email})
+    if(userExists){
         res.json({"message":"User already Exists"})
     }
-    if(userExists.username == username){
+    userExists = await Users.findOne({username})
+    if(userExists){
         res.json({"message":"Username exists"})
     }
     const hashedPassword = await bcrypt.hash(password,10)
