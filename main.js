@@ -12,7 +12,9 @@ const connectDB = require("./connectMongo");
 connectDB();
 
 app.use("/comments",commentRoute)
-
+app.get("/",(req,res)=>{
+  res.send("Hello")
+})
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
