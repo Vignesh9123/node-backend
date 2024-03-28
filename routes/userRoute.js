@@ -22,3 +22,5 @@ app.post("/signup",async(req,res)=>{
     }
     res.json({"message":"Something went wrong","email":email})
 })
+
+module.exports = app
