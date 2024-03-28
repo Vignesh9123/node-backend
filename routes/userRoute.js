@@ -10,11 +10,11 @@ app.post("/signup",async(req,res)=>{
     const {email,username,password} = body
     let userExists = await Users.findOne({email})
     if(userExists){
-        res.json({"message":"User already Exists"})
+       return res.json({"message":"User already Exists"})
     }
     userExists = await Users.findOne({username})
     if(userExists){
-        res.json({"message":"Username exists"})
+       return res.json({"message":"Username exists"})
     }
     const hashedPassword = await bcrypt.hash(password,10)
     let createUser = await Users.create({
@@ -22,7 +22,7 @@ app.post("/signup",async(req,res)=>{
     })
     if(createUser){
         createUser.password = undefined
-        res.json({"message":"Success","user":createUser})
+       return res.json({"message":"Success","user":createUser})
     }
     res.json({"message":"Something went wrong","email":email})
 })
