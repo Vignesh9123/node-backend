@@ -12,7 +12,7 @@ require("dotenv").config();
 app.use("/comments",commentRoute)
 
 mongoose.connect(process.env.MONGODB_URI,{dbName:"Sample_comm"}).then(()=>{
-    app.listen(3001,()=>{
+    app.listen(process.env.PORT,()=>{
         console.log("Running")
     })
 })
