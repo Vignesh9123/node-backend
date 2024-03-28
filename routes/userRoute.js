@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt")
 app.use(bodyparser.json())
 app.post("/signup",async(req,res)=>{
     let body = req.body
+    res.send(body)
     const {email,username,password} = body
     let userExists = await Users.findOne({email})
     if(userExists){
