@@ -8,11 +8,13 @@ const commentRoute = require("./routes/commentRoute")
 app.use(cors())
 app.use(bodyparser.json())
 require("dotenv").config();
+const connectDB = require("./connectMongo");
+connectDB();
 
 app.use("/comments",commentRoute)
 
-mongoose.connect(process.env.MONGODB_URI,{dbName:"Sample_comm"}).then(()=>{
-    app.listen(process.env.PORT,()=>{
-        console.log("Running")
-    })
-})
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+  console.log("Server is running on port " + PORT);
+});
