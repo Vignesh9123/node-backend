@@ -1,6 +1,7 @@
 const Users = require("../models/userSchema")
 const app = require("express").Router()
 const bodyparser = require("body-parser")
+const bcrypt = require("bcrypt")
 
 app.use(bodyparser.json())
 app.post("/signup",async(req,res)=>{
