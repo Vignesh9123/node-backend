@@ -2,7 +2,8 @@ const Users = require("../models/userSchema")
 const bcrypt = require("bcrypt")
 export default async function signupController(req,res){
     try{
-    const {email,username,password} = req.body
+    const {username,password} = req.body
+    const email = req.body.email.toLowerCase()
     let userExists = await Users.findOne({email})
     if(userExists){
        return res.json({"message":"User already Exists"})
@@ -13,7 +14,7 @@ export default async function signupController(req,res){
     }
     const hashedPassword = await bcrypt.hash(password,10)
     let createUser = await Users.create({
-        email,username,password:hashedPassword
+        email:email,username,password:hashedPassword
     })
     if(createUser){
         createUser.password = undefined
