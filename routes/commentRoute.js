@@ -11,7 +11,7 @@ app.get("/:id", async(req,res)=>{
     if(!comments){
         return res.status(400).json({"message":"Error fetching comments"})
     }
-    res.json(comments)
+    res.status(200).json({"message":"success",comments})
 })
 app.post("/add",async(req,res)=>{
     const body = req.body
