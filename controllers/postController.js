@@ -1,7 +1,7 @@
 import Posts from "../models/postSchema";
 export async function getPostbyId(req,res){
-    try{const postId = req.params.id
-    let post = await Posts.findOne({postId})
+    try{const id = req.params.id
+    let post = await Posts.findOne({id})
     if(!post){
         return res.json({"message":"No post was found"})
     }
