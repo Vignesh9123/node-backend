@@ -5,7 +5,7 @@ export default async function getPosts(req,res){
         if(!post){
            return res.status(404).json({"message":"Error fetching posts"})
         }
-        res.status(200).json(post)
+       return res.status(200).json(post)
     } catch (e) {
         res.status(404).json({"message":e.message})
     }
