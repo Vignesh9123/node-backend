@@ -36,8 +36,8 @@ app.post("/signin",async(req,res)=>{
     }
     const matchPassword = await bcrypt.compare(password,userExists.password)
     if(matchPassword){
-        createUser.password = undefined
-       return res.json({"message":"Success","user":createUser})
+        userExists.password = undefined
+       return res.json({"message":"Success","user":userExists})
     }
     if(!matchPassword){
         return res.json({"message":"Invalid credentials"})
