@@ -1,4 +1,15 @@
 import Posts from "../models/postSchema";
+export async function getPostbyId(req,res){
+    try{const postId = req.params.id
+    let post = await Posts.findOne({postId})
+    if(!post){
+        return res.json({"message":"No post was found"})
+    }
+    return res.json(post)}
+    catch(e){
+        res.json({"message":e.message})
+    }
+}
 export default async function getPosts(req,res){
     try {
         const post = await Posts.find({})
