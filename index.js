@@ -6,6 +6,8 @@ const bodyparser = require("body-parser")
 const Comments = require("./models/commentSchema")
 const commentRoute = require("./routes/commentRoute")
 const userRoute = require("./routes/userRoute")
+const postRoute = require("./routes/postRoute")
+
 app.use(cors())
 app.use(bodyparser.json())
 require("dotenv").config();
@@ -14,6 +16,7 @@ connectDB();
 
 app.use("/comments",commentRoute)
 app.use("/user",userRoute)
+app.use("/posts",postRoute)
 app.get("/",(req,res)=>{
   res.send("Hello")
 })
