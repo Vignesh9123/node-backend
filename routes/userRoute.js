@@ -1,7 +1,5 @@
-const Users = require("../models/userSchema")
 const app = require("express").Router()
 const bodyparser = require("body-parser")
-const bcrypt = require("bcrypt")
 const { default: signupController } = require("../controllers/signupController")
 const { default: signinController } = require("../controllers/signinController")
 
