@@ -1,3 +1,5 @@
+const Users = require("../models/userSchema")
+const bcrypt = require("bcrypt")
 export default async function signupController(req,res){
     try{
     const {email,username,password} = req.body
