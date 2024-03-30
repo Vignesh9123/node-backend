@@ -5,6 +5,7 @@ export async function getPostbyId(req,res){
     if(!post){
         return res.json({"message":"No post was found"})
     }
+    
     return res.json(post)}
     catch(e){
         res.json({"message":e.message})
